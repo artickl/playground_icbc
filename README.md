@@ -1,4 +1,4 @@
-# playground_icbc
+## ICBC
 icbc driving test check of availability
 
 # Install / Pre-Install
@@ -25,7 +25,13 @@ ChromeDriver was started successfully.
 $ sudo cp -v chromedriver /usr/bin/
 ```
 
-# to run the script
+# Config
+```
+$ cp test_icbc.ini.example test_icbc.ini
+$ cat 
+```
+
+# Run
 ```
 $ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '\[I\]:'
 [I]: Friday, April 22nd, 2022 - Langley driver licensing (Willowbrook Center)
@@ -34,4 +40,11 @@ $ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '
 [I]: Wednesday, April 13th, 2022 - Port Coquitlam driver licensing
 [I]: Wednesday, April 20th, 2022 - Port Coquitlam driver licensing
 [I]: Monday, April 25th, 2022 - Port Coquitlam driver licensing
+```
+
+## TELEGRAM
+
+For messages to telegram please use:
+```
+$ telegram.sh
 ```
