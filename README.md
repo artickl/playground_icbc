@@ -1,6 +1,8 @@
 # playground_icbc
-icbc driving test scheduler optimization
+icbc driving test check of availability
 
+# Install / Pre-Install
+```
 $ pip3 install pipenv
 $ pipenv install pytest --dev
 $ pipenv install selenium --dev
@@ -21,3 +23,15 @@ Please see https://chromedriver.chromium.org/security-considerations for suggest
 ChromeDriver was started successfully.
 
 $ sudo cp -v chromedriver /usr/bin/
+```
+
+# to run the script
+```
+$ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '\[I\]:'
+[I]: Friday, April 22nd, 2022 - Langley driver licensing (Willowbrook Center)
+[I]: Monday, April 25th, 2022 - Langley driver licensing (Willowbrook Center)
+[I]: Tuesday, March 8th, 2022 - Port Coquitlam driver licensing
+[I]: Wednesday, April 13th, 2022 - Port Coquitlam driver licensing
+[I]: Wednesday, April 20th, 2022 - Port Coquitlam driver licensing
+[I]: Monday, April 25th, 2022 - Port Coquitlam driver licensing
+```
