@@ -1,3 +1,4 @@
 #[TELEGRAM]
-#to receive tocket - text @botFather in telegram
+#to receive tocken - text @botFather in telegram
 TELEGRAM_BOT_TOKEN=******:*******-******
+CHATID=*****

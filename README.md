@@ -1,7 +1,7 @@
-## ICBC
+# ICBC
 icbc driving test check of availability
 
-# Install / Pre-Install
+## Install / Pre-Install
 ```
 $ pip3 install pipenv
 $ pipenv install pytest --dev
@@ -25,13 +25,13 @@ ChromeDriver was started successfully.
 $ sudo cp -v chromedriver /usr/bin/
 ```
 
-# Config
+## Config
 ```
 $ cp test_icbc.ini.example test_icbc.ini
 $ cat 
 ```
 
-# Run
+## Run
 ```
 $ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '\[I\]:'
 [I]: Friday, April 22nd, 2022 - Langley driver licensing (Willowbrook Center)
@@ -42,9 +42,23 @@ $ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '
 [I]: Monday, April 25th, 2022 - Port Coquitlam driver licensing
 ```
 
-## TELEGRAM
+# TELEGRAM
 
-For messages to telegram please use:
+## Prerequirement
+curl
+jq - from https://stedolan.github.io/jq/download/
 ```
-$ telegram.sh
+$ wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+$ chmod +x jq-linux64 
+$ mv jq-linux64 jq
+```
+
+## Sending message
+```
+$ ./telegram.sh "a b c d - test"
+```
+
+## Full command
+```
+playground_icbc$ pipenv run python -m pytest -s tests/test_icbc.py | grep '\[I\]:' | grep -e "October" -e "November" -e "December" -e "January" | while read line; do tests/telegram.sh "$line"; done
 ```
