@@ -17,4 +17,4 @@ echo $TELEGRAM_BOT_TOKEN
 curl -X POST \
      -H 'Content-Type: application/json' \
      -d "{\"chat_id\": \"$CHATID\", \"text\": \"$1\"}" \
-     https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
+     https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage 2>/dev/null

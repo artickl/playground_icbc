@@ -16,6 +16,7 @@ Google Chrome 95.0.4638.54
 - find correct version here: https://sites.google.com/chromium.org/driver/downloads
 $ wget https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_linux64.zip 
 $ unzip chromedriver_linux64.zip
+$ rm chromedriver_linux64.zip
 $ ./chromedriver 
 Starting ChromeDriver 95.0.4638.17 (a9d0719444d4b035e284ed1fce73bf6ccd789df2-refs/branch-heads/4638@{#178}) on port 9515
 Only local connections are allowed.
@@ -26,9 +27,12 @@ $ sudo cp -v chromedriver /usr/bin/
 ```
 
 ## Config
+Use the same information you are using for https://onlinebusiness.icbc.com/webdeas-ui/home
+
 ```
 $ cp test_icbc.ini.example test_icbc.ini
-$ cat 
+$ vim test_icbc.ini
+...
 ```
 
 ## Run
@@ -45,20 +49,35 @@ $ pipenv run python -m pytest -s tests/test_icbc.py | tee test_icbc.log | grep '
 # TELEGRAM
 
 ## Prerequirement
-curl
-jq - from https://stedolan.github.io/jq/download/
 ```
+$ cd tests
 $ wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 $ chmod +x jq-linux64 
 $ mv jq-linux64 jq
 ```
 
+## Config
+Create bot tocken in Telegram by asking @BotFather and send one message to your bot
+```
+$ cp telegram.ini.example telegram.ini
+$ vim telegram.ini
+...
+```
+
 ## Sending message
 ```
 $ ./telegram.sh "a b c d - test"
+#first time it wil get a chatid - for now only working with one chatid
+
+$ ./telegram.sh "abcd - test2"
+#this message will be delivered to your telegram
 ```
 
 ## Full command
 ```
 playground_icbc$ pipenv run python -m pytest -s tests/test_icbc.py | grep '\[I\]:' | grep -e "October" -e "November" -e "December" -e "January" | while read line; do tests/telegram.sh "$line"; done
+```
+or
+```
+$ ./all.sh
 ```

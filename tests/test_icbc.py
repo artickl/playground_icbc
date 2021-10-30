@@ -36,7 +36,7 @@ def test_icbc(browser):
   sleep(3)
 
   location_input = browser.find_element(By.ID,'mat-input-3')
-  location_input.send_keys(config['DEFAULT']['location1'].strip("'"))
+  location_input.send_keys(config['DEFAULT']['location1'].strip("'\""))
   sleep(2)
   try:
     WebDriverWait(browser, 2).until(EC.element_to_be_clickable((By.XPATH,'//*[@class="mat-option-text"]'))) 
